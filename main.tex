@@ -1,0 +1,72 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+ 
+\renewcommand\lstlistingname{Algorithm}
+\renewcommand\lstlistlistingname{Algorithms}
+\def\lstlistingautorefname{Alg.}
+
+\lstdefinestyle{Python}{
+    language        = Python,
+    frame           = lines, 
+    basicstyle      = \footnotesize,
+    keywordstyle    = \color{blue},
+    stringstyle     = \color{green},
+    commentstyle    = \color{red}\ttfamily
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{SIE 564}
+\newcommand\hwnumber{2}                  % <-- homework number
+\newcommand\NetIDa{Martin M Lopez}           % <-- NetID of person #1
+%\newcommand\NetIDb{netid12038}           % <-- NetID of person #2 (Comment this line out for problem sets)
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+%\lhead{\NetIDa\\\NetIDb}                 % <-- Comment this line out for problem sets (make sure you are person #1)
+\chead{\textbf{\Large Homework \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+
+\begin{document}
+
+\section*{Part A. Cost Estimate with COCOMO II}
+Beaver, Inc. needs to develop a large new supply chain management system within 24 months and an available budget of \$8,200,000.  The full set of capabilities adds up to 200 KSLOC of software.  Beaver, Inc. is a CMMI Level 3 company, is generally familiar with the product line, will follow general conformity in design flexibility, generally does architecture and risk resolution, and has a largely cooperative team (i.e., all of its scale factors are rated High).  Its average labor cost is \$10,000, per person-month.  For simplicity, consider all of its baseline cost driver ratings to be Nominal.
+
+\section*{Part B. Sanity check}
+Chose an alternative estimation method (analogy, bottom up, or expert opinion, etc.) and discuss:
+    \begin{enumerate}
+        \item The process of how you would develop a cost estimate for the supply chain management system using this alternative method.
+    \end{enumerate}
+    
+    \begin{enumerate}
+        \item How the cost estimate for the supply chain management system might differ by using this alternative method (Would it be higher or lower?  Have more or less detail?). 
+    \end{enumerate}
+    \begin{enumerate}
+        \item Whether you expect this alternative method to yield a more accurate or less accurate estimate compared to the estimate obtained by using COCOMO II.
+    \end{enumerate}
+
+
+\end{document}
