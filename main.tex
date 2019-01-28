@@ -54,19 +54,102 @@
 
 \section*{Part A. Cost Estimate with COCOMO II}
 Beaver, Inc. needs to develop a large new supply chain management system within 24 months and an available budget of \$8,200,000.  The full set of capabilities adds up to 200 KSLOC of software.  Beaver, Inc. is a CMMI Level 3 company, is generally familiar with the product line, will follow general conformity in design flexibility, generally does architecture and risk resolution, and has a largely cooperative team (i.e., all of its scale factors are rated High).  Its average labor cost is \$10,000, per person-month.  For simplicity, consider all of its baseline cost driver ratings to be Nominal.
-
+\subsection*{Solution}
+Given the problem statement we choose the Early-Design Effort Multipliers since Beaver Inc. is developing a large new supply chain management system. In determining the Person months required to develop a 200 KSLOC product of software we utilize the following Effort Equation:
+    \begin{align*}
+        &PM_{NS} = A * Size^E * \Pi_{i=1}^{n}EM_i\\
+        &\text{where}\\
+        &A = 2.94\\
+        &Size = 200\\
+        &E = B + 0.01 * \Sigma_{j=1}^{5}SF_j
+    \end{align*}
+We use $A = 2.94$ based on the COCOMO II.2000 Multiplicative calibrated effort coefficient.To determine $E$ which represents the scaling exponent for Effort we utilize the following equation:
+    \begin{align*}
+        &E = B + 0.01 * \Sigma_{j=1}^{5}SF_j\\
+        &\text{Where}\\
+        &B = 0.91\\
+        &SF = \text{Scale Factors}
+    \end{align*}
+In the equation B represents the scaling base-exponent for effort that is calibrated. The five scale factors that we utilize are:
+    \begin{enumerate}
+        \item PREC = Prescedentness
+        \item FLEX = Development Flexibility
+        \item RESL = Architecture/Risk Resolution
+        \item TEAM = Team Cohesion
+        \item PMAT = Process Maturity
+    \end{enumerate}
+Due to the fact the Beaver Inc. is classified as company with a Capability Maturity Modeled (CMM) at a level 3 we match these scale factors to the following weights:
+    \begin{enumerate}
+        \item PREC = 2.48
+        \item FLEX = 2.03
+        \item RESL = 2.83
+        \item TEAM = 2.19
+        \item PMAT = 3.12
+    \end{enumerate}
+Given the values for each scale factor and utilizing $B = 0.91$ we calculate E.
+    \begin{align*}
+        &E = 0.91 + 0.01 * (2.48+2.03+2.83+2.19+3.12)\\
+        &E = 1.0365
+    \end{align*}
+The next aspect of the Effort Equation is to determine the effort multipliers. Since this project is new and best fits the Early Design Effort Multipliers Criteria we select and match those values to those Effort Multipliers (EM).The Early Design Multipliers are:
+    \begin{enumerate}
+        \item RCPX = Product Reliability and Complexity
+        \item RUSE = Developed Reusability
+        \item PDIF = Platform Difficulty
+        \item PERS = Personnel Capability & Mapping Example
+        \item PREX = PErsonnel Experience
+        \item FCIL = Facilities
+        \item SCED = Required Development Schedule
+    \end{enumerate}
+We use this effort equation to later determine the Schedule utlilizing the COCOMO II.2000 Schedule Equation:
+    \begin{align*}
+        &TDEV = C * (PM_{NS})^F\\
+        &C = \text{Schedule coefficient that is calibrated} = 3.67\\
+        &F = \text{Scaling exponent for schedule}
+    \end{align*}
+We calculate $F$:
+    \begin{align*}
+        &F = D + 0.2*[E-B]\\
+        &D = \text{Scaleing Base exponent for schedule that's calibrated}=0.28\\
+        &E = 1.0365\\
+        &B = \text{Scaling base-exponent for the effort equation} = 0.91\\
+        &F= 0.28+(0.2*(1.0365 - 0.91)) = 0.3053
+    \end{align*}
+We now have the equations to calculate the effort and the schedule to determine cost.
+    \begin{align*}
+        &PM_{NS} = (2.94)*(200)^{1.0365} * \Pi_{i=1}^{n}EM_i\\
+        &TDEV = (3.67)*(PM_{NS})^{0.3053}
+    \end{align*}
+Compute the project’s cost and schedule for the following cases:
+1.	Everything as described above, and RELY rated as Nominal\\
+With the RELY rated as Nominal we have the scale factor of RECPX = nominal and the rest of the scale factors are nominal. We get the following:
+    \begin{equation*}
+        \Pi_{i=1}^{5} = 1.0
+    \end{equation*}
+We then obtain a Effort Number by using the effort equation:
+    \begin{align*}
+        &PM_{NS} = (2.94)*(200)^{1.0365} * \Pi_{i=1}^{n}EM_i\\
+        &PM_{NS} = (2.94)*(200)^{1.0365} * (1.0) \\
+        &PM_{NS} = 713.45 \approx 713 \text{ months}\\
+        &TDEV = (3.67)(713)^{0.3053} = 27.27 \approx 27 
+    \end{align*}
+2.	RELY rated as High\\
+    \begin{align*}
+        &PM_{NS} = (2.94)*(200)^{1.0365} * \Pi_{i=1}^{n}EM_i\\
+        &PM_{NS} = (2.94)*(200)^{1.0365} * (1.33) \\
+        &PM_{NS} =  948.989\approx 949  \text{ months}\\
+        &TDEV = (3.67)*(949)^{0.3053} =  29.75\approx 30
+    \end{align*}
+3.	RELY rated as High, SCED rated as Low
+    \begin{align*}
+        &PM_{NS} = (2.94)*(200)^{1.0365} * \Pi_{i=1}^{n}EM_i\\
+        &PM_{NS} = (2.94)*(200)^{1.0365} * (1.5162) \\
+        &PM_{NS} =  1081.73\approx  1082\text{ months}\\
+        &TDEV = (3.67)*(1082)^{0.3053} =  30.97\approx 31  
+    \end{align*}
 \section*{Part B. Sanity check}
-Chose an alternative estimation method (analogy, bottom up, or expert opinion, etc.) and discuss:
-    \begin{enumerate}
-        \item The process of how you would develop a cost estimate for the supply chain management system using this alternative method.
-    \end{enumerate}
-    
-    \begin{enumerate}
-        \item How the cost estimate for the supply chain management system might differ by using this alternative method (Would it be higher or lower?  Have more or less detail?). 
-    \end{enumerate}
-    \begin{enumerate}
-        \item Whether you expect this alternative method to yield a more accurate or less accurate estimate compared to the estimate obtained by using COCOMO II.
-    \end{enumerate}
-
-
+Chose an alternative estimation method (analogy, bottom up, or expert opinion, etc.) and discuss:\\
+1.	The process of how you would develop a cost estimate for the supply chain management system using this alternative method.\\
+2.	How the cost estimate for the supply chain management system might differ by using this alternative method (Would it be higher or lower?  Have more or less detail?).\\
+3.	Whether you expect this alternative method to yield a more accurate or less accurate estimate compared to the estimate obtained by using COCOMO II. \\
 \end{document}
