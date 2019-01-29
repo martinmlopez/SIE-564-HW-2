@@ -44,7 +44,7 @@
 \lhead{\NetIDa}
 %\lhead{\NetIDa\\\NetIDb}                 % <-- Comment this line out for problem sets (make sure you are person #1)
 \chead{\textbf{\Large Homework \hwnumber}}
-\rhead{\course \\ \today}
+\rhead{\course \\ January 29, 2019}
 \lfoot{}
 \cfoot{}
 \rfoot{\small\thepage}
@@ -91,19 +91,10 @@ Given the values for each scale factor and utilizing $B = 0.91$ we calculate E.
         &E = 0.91 + 0.01 * (2.48+2.03+2.83+2.19+3.12)\\
         &E = 1.0365
     \end{align*}
-The next aspect of the Effort Equation is to determine the effort multipliers. Since this project is new and best fits the Early Design Effort Multipliers Criteria we select and match those values to those Effort Multipliers (EM).The Early Design Multipliers are:
-    \begin{enumerate}
-        \item RCPX = Product Reliability and Complexity
-        \item RUSE = Developed Reusability
-        \item PDIF = Platform Difficulty
-        \item PERS = Personnel Capability & Mapping Example
-        \item PREX = PErsonnel Experience
-        \item FCIL = Facilities
-        \item SCED = Required Development Schedule
-    \end{enumerate}
-We use this effort equation to later determine the Schedule utlilizing the COCOMO II.2000 Schedule Equation:
+The next aspect of the Effort Equation is to determine the effort multipliers. Since this project is new and best fits the Early Design Effort Multipliers Criteria we select and match those values to those Effort Multipliers (EM).
+We use this effort equation to later determine the Schedule utilizing the COCOMO II.2000 Schedule Equation:
     \begin{align*}
-        &TDEV = C * (PM_{NS})^F\\
+        &TDEV = C * (PM_{NS})^F * \frac{SCED\%}{100}\\
         &C = \text{Schedule coefficient that is calibrated} = 3.67\\
         &F = \text{Scaling exponent for schedule}
     \end{align*}
@@ -113,12 +104,12 @@ We calculate $F$:
         &D = \text{Scaleing Base exponent for schedule that's calibrated}=0.28\\
         &E = 1.0365\\
         &B = \text{Scaling base-exponent for the effort equation} = 0.91\\
-        &F= 0.28+(0.2*(1.0365 - 0.91)) = 0.3053
+        &F= 0.33+(0.2*(1.0365 - 1.01)) = 0.3355
     \end{align*}
 We now have the equations to calculate the effort and the schedule to determine cost.
     \begin{align*}
         &PM_{NS} = (2.94)*(200)^{1.0365} * \Pi_{i=1}^{n}EM_i\\
-        &TDEV = (3.67)*(PM_{NS})^{0.3053}
+        &TDEV = (3.67)*(PM_{NS})^{0.3355}* \frac{SCED\%}{100}
     \end{align*}
 Compute the project’s cost and schedule for the following cases:
 1.	Everything as described above, and RELY rated as Nominal\\
@@ -129,30 +120,75 @@ With the RELY rated as Nominal we have the scale factor of RECPX = nominal and t
 We then obtain a Effort Number by using the effort equation:
     \begin{align*}
         &PM_{NS} = (2.94)*(200)^{1.0365} * \Pi_{i=1}^{n}EM_i\\
-        &\Pi_{i=1}^{5} = 1.0
+        &\Pi_{i=1}^{5} = 1.0\\
         &PM_{NS} = (2.94)*(200)^{1.0365} * (1.0) \\
-        &PM_{NS} = 713.45 \approx 713 \text{ months}\\
-        &TDEV = (3.67)(713)^{0.3053} = 27.27 \approx 27 
+        &PM_{NS} = 713.45 \approx 713 \\
+        &Cost = 7,130,000\\
+        &TDEV = (3.67)(713)^{0.3355}* \frac{100}{100} =  33.21 \approx 33  \text{ months}
     \end{align*}
+We see that we meet the cost requirement as the cost is less than \$8,200,000 but do not meet the schedule requirement as more than 24 months.\\
 2.	RELY rated as High\\
     \begin{align*}
         &PM_{NS} = (2.94)*(200)^{1.0365} * \Pi_{i=1}^{n}EM_i\\
-        &\Pi_{i=1}^{5} = 1.33\\
-        &PM_{NS} = (2.94)*(200)^{1.0365} * (1.33) \\
-        &PM_{NS} =  948.989\approx 949  \text{ months}\\
-        &TDEV = (3.67)*(949)^{0.3053} =  29.75\approx 30
+        &\Pi_{i=1}^{5} = 1.10\\
+        &PM_{NS} = (2.94)*(200)^{1.0365} * (1.10) \\
+        &PM_{NS} = 784.79\approx 785\\
+        &Cost = 7,850,000\\
+        &TDEV = (3.67)*(785)^{0.3355}* \frac{100}{100} = 34.40 \approx 34 \text{ months}
     \end{align*}
+In this scenario we still meet the cost requirement of \$8,200,000 but exceed the schedule requirement of 24 months.\\
 3.	RELY rated as High, SCED rated as Low
     \begin{align*}
         &PM_{NS} = (2.94)*(200)^{1.0365} * \Pi_{i=1}^{n}EM_i\\
-        &\Pi_{i=1}^{5} = 1.5162\\
-        &PM_{NS} = (2.94)*(200)^{1.0365} * (1.5162) \\
-        &PM_{NS} =  1081.73\approx  1082\text{ months}\\
-        &TDEV = (3.67)*(1082)^{0.3053} =  30.97\approx 31  
+        &\Pi_{i=1}^{5} = 1.254\\
+        &PM_{NS} = (2.94)*(200)^{1.0365} * (1.254) \\
+        &PM_{NS} =  894.66\approx 895  \\
+        &Cost = 8,950,000\\
+        &TDEV = (3.67)*(895)^{0.3355}* \frac{85}{100} = 30.46 \approx 30 \text{ months}
     \end{align*}
+In this scenario we do not meet neither the cost or schedule requirements.\\
+Suppose the project prioritized its capabilities and decided to develop the top-priority requirements.  What would the 200 KSLOC need to be reduced to in order to satisfy all three “Cost, Schedule, Quality” criteria?\\
+
+In reducing the amount of KSLOC to meet the cost schedule and criteria for all three scenarios must be updated to 80KSLOCs. The results are the following:\\
+1. \\
+    \begin{align*}
+        &PM_{NS} = (2.94)*(200)^{1.0365} * \Pi_{i=1}^{n}EM_i\\
+        &\Pi_{i=1}^{5} = 1.0\\
+        &PM_{NS} = (2.94)*(80)^{1.0365} * (1.0) \\
+        &PM_{NS} = 275.99 \approx 276  \\
+        &Cost = 2,760,000\\
+        &TDEV = (3.67)(276)^{0.3355}* \frac{100}{100} =  24.16 \approx 24 \text{ months}
+    \end{align*}
+2.\\
+    \begin{align*}
+        &PM_{NS} = (2.94)*(200)^{1.0365} * \Pi_{i=1}^{n}EM_i\\
+        &\Pi_{i=1}^{5} = 1.0\\
+        &PM_{NS} = (2.94)*(80)^{1.0365} * (1.0) \\
+        &PM_{NS} = 303.59 \approx 303 \\
+        &Cost = 3,030,000\\
+        &TDEV = (3.67)(303)^{0.3355}* \frac{100}{100} =  24.9 \approx 25 \text{ months}
+    \end{align*} 
+3.\\
+    \begin{align*}
+        &PM_{NS} = (2.94)*(200)^{1.0365} * \Pi_{i=1}^{n}EM_i\\
+        &\Pi_{i=1}^{5} = 1.0\\
+        &PM_{NS} = (2.94)*(80)^{1.0365} * (1.0) \\
+        &PM_{NS} = 346.09 \approx 346 \\
+        &Cost = 3,460,000\\
+        &TDEV = (3.67)(346)^{0.3355}* \frac{85}{100} =  22.15 \approx 22 \text{ months}
+    \end{align*} 
 \section*{Part B. Sanity check}
 Chose an alternative estimation method (analogy, bottom up, or expert opinion, etc.) and discuss:\\
-1.	The process of how you would develop a cost estimate for the supply chain management system using this alternative method.\\
-2.	How the cost estimate for the supply chain management system might differ by using this alternative method (Would it be higher or lower?  Have more or less detail?).\\
-3.	Whether you expect this alternative method to yield a more accurate or less accurate estimate compared to the estimate obtained by using COCOMO II. \\
+\quad \quad 1.	The process of how you would develop a cost estimate for the supply chain management system using this alternative method.\\\\
+The process to develop a cost estimate for the supply chain management system would be the bottoms up approach. Utilizing this methodology may involve many hours and planning but it will determine the the level of effort it would take to determine the development of the new software package. Experts would come and clearly detail out the Workbreak Down Structure (WBS) to determine how long it will take to complete the architecture, implementation, and testing of the software. The methodology will be determined whether the team would develop the software utilizing agile methodologies or waterfall. Based on these decisions the WBS will be structured, capabilities prioritized and work would be scoped.\\\\
+\quad \quad 2.	How the cost estimate for the supply chain management system might differ by using this alternative method (Would it be higher or lower?  Have more or less detail?).\\\\
+\quad \quad 3.	Whether you expect this alternative method to yield a more accurate or less accurate estimate compared to the estimate obtained by using COCOMO II. \\\\
+\section*{Part C. DMAIC}
+    \begin{enumerate}
+        \item Describe something you want to improve and have control over:
+        \item Investigate features of the item(s) to be imporved, decomposing the problem, and setting three targets for improvement: worse case, realistic case, and best case scenarios.
+        \item Identify source of variation and determine root causes
+        \item Define improvement steps or interventions that will be implemented in order to reach desired targets in step 2.
+        \item Identify mechanisms for long term sustainement. What rewards will incentivize high performance in the future? Identify commitment device for each of the three target levels (worst, realistic, best).
+    \end{enumerate}
 \end{document}
